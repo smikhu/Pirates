@@ -24,7 +24,7 @@
 <h4>Desktop</h4>
 <h4>Mobile</h4>
 
-<h2><Live App Link</h2>
+<h2>Live App Link</h2>
 
 <h2>Future Enhancements</h2>
 
