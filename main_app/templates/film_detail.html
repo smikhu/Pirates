@@ -1,0 +1,51 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+    <div class="lotr">
+        <a href="{% url 'film_update' film.pk %}">Edit</a>
+
+        <a href="{% url 'film_delete' film.pk %}">Delete</a>
+        <h2>{{film.title}}</h2>
+        <img src="{{film.img}}"/>
+        <p>Genre - {{film.genre}}</p>
+        <p>Plot - {{film.plot}}</p>
+        <p>Director - {{film.director}}</p>
+        <p>Rated - {{film.rated}}</p>
+        <p>Released - {{film.released}}</p>
+        <p>MetaScore - {{film.metascore}}</p>
+        <p>IMDB Rating - {{film.imdbrating}}</p>
+        <br>
+    </div>
+
+    {% for rating in film.ratings.all %}
+    <div class="ratings">
+        <p>{{rating.name}}</p>
+        <p>{{rating.score}}<span class="fa fa-star fa-1x checked"></span></p>
+        <p>{{rating.comment}}</p>
+    </div>
+
+    {% endfor %}
+
+    <form method="POST" action="{% url 'rating_create' film.pk %}">
+        <!-- <form class="rate-form" method="POST" action="{% url 'rating_create' film.pk %}"> -->
+        {% csrf_token %}
+        Name - <input type="text" name="name" placeholder="Name" />
+        <br>
+        Score - <input type="number" name="score" min="1" max="5" required />
+        <!-- <div class="col text-center" name="score" value="score">
+            Score
+            <button name="score" type="submit" class="my-btn fa fa-star fa-1x checked" id="first"></button>
+            <button name="score" type="submit" class="my-btn fa fa-star fa-1x checked" id="second"></button>
+            <button name="score" type="submit" class="my-btn fa fa-star fa-1x checked" id="third"></button>
+            <button name="score" type="submit" class="my-btn fa fa-star fa-1x" id="fourth"></button>
+            <button name="score" type="submit" class="my-btn fa fa-star fa-1x" id="fifth"></button>
+        </div> -->
+        <br>
+        Comment -<textarea name="comment" rows="4" cols="50"></textarea>
+        <br>
+        <input type="submit" value="Rate" />
+    </form>
+    
+
+{% endblock %}

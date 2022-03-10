@@ -1,0 +1,31 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<a href="{% url 'film_create' %}">Add New Film</a>
+
+<form method="get">
+    <div>
+      <div>
+        <!--  Our input will search by name of artist  -->
+        <input class="input" type="text" name="title" placeholder="Title" />
+      </div>
+      <div>
+        <input type="submit" value="Search" />
+      </div>
+    </div>
+    <!--  This anchor tag will redirect back to artist list without a query param -->
+    <a href="{% url 'home' %}">Clear Search</a>
+  </form>
+
+    {% for film in films %}
+    <div class="lotr">
+        <h2>{{film.title}}</h2>
+        <a href="{% url 'film_detail' film.pk %}">
+            <img src="{{film.img}}"/>
+        </a>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
