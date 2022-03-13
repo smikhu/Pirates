@@ -1,15 +1,16 @@
+from time import time
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from .models import Film, Rating
+from .models import Film, Rating, Favorite
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 
@@ -41,14 +42,35 @@ class Home(TemplateView):
         # context["films"] = Film.objects.all()
         title = self.request.GET.get("title")
         if title != None:
-            context["films"] = Film.objects.filter(title__icontains=title, user=self.request.user)
+            context["films"] = Film.objects.filter(title__icontains=title)
         else:
-            context["films"] = Film.objects.filter(user=self.request.user)
+            context["films"] = Film.objects.all()
         return context
-        
+
 @method_decorator(login_required, name='dispatch')
-class Favorites(TemplateView):
+class FavoritesList(TemplateView):
     template_name = "favorites.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorites"] = Favorite.objects.filter(user=self.request.user)
+
+
+
+        return context
+
+class AddFavorite(View):
+    def get(self, request, film_pk):
+        current_film = Film.objects.get(pk=film_pk)
+        favorite = Favorite.objects.create(user=self.request.user, title=current_film.title, img=current_film.img, film=current_film)
+        return redirect('favorites')
+
+class RemoveFavorite(View):
+    def get(self, request, favorite_pk):
+        favorite = Favorite.objects.get(pk=favorite_pk)
+        favorite.delete()
+        return redirect('favorites')
+
 
 class NavBar(TemplateView):
     template_name = "navbar.html"
@@ -69,6 +91,18 @@ class FilmCreate(CreateView):
 class FilmDetail(DetailView):
     model = Film 
     template_name = "film_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # interactions of query sets
+        all_films = Film.objects.all()
+        all_favorites = Favorite.objects.filter(user=self.request.user).values_list('title', flat=True)
+        # 
+        print(all_favorites)
+        available = all_films.exclude(title__in=all_favorites)
+        print(available)
+        context['available'] = available
+        return context
 
 class FilmUpdate(UpdateView):
     model = Film
@@ -113,3 +147,6 @@ class Signup(View):
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
+
+
+# query sets

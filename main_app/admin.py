@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import Film, Rating
+from .models import Film, Rating, Favorite
 
 
 # Register your models here.
 admin.site.register(Film)
 admin.site.register(Rating)
+admin.site.register(Favorite)
 
 
 # INSERT INTO main_app_film(title, img, genre, plot, director, rated, released, metascore, imdbrating) VALUES('The Lord of the Rings: The Fellowship of the Ring', 'https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg', 'Action, Adventure, Drama', 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.', 'Peter Jackson', 'PG-13', '19 Dec 2001', '92', '8.8');

@@ -2,6 +2,16 @@
 
 {% block content %}
 
-<h1>Favorites</h1>
+<h1>Favorites</h1> 
+{% for favorite in favorites %}
+
+<p>{{ favorite.title }} | </p>
+<img src="{{ favorite.img }}"></img>
+
+<a href="{% url 'remove_favorite' favorite.pk %}">Remove</a>
+
+
+{% endfor %}
+
 
 {% endblock %}

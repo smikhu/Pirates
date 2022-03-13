@@ -1,0 +1,87 @@
+   <!-- {% if user.is_authenticated and not favorited%}
+    <form method="POST" action="{% url 'add_favorite' user.pk film.pk %}">
+        {% csrf_token %}
+        <button>Add Favorite</button>
+    </form>
+    {% else %}
+        <button>Remove Favorite</button>
+    {% endif %} -->
+    
+    <!--     
+        {% for favorite in film.favorites.all %}
+        <h3>{{favorite.user.username}} has favorited this</h3>
+        {% endfor %}
+        
+        
+        <a href="{% url 'add_favorite' film.pk user.pk %}?assoc=add">Add</a>
+    
+        <form method="POST" action="{% url 'add_favorite' film.pk user.pk %}">
+            {%csrf_token%}
+            <button>ADD</button>
+        </form>
+         -->
+    
+    <!-- <form method="POST" action="{% url 'add_favorite' user.pk film.pk %}">
+        {% csrf_token %}
+        <button>Add Favorite</button>
+    </form> -->
+
+
+
+
+
+
+
+
+
+    # path('film/<int:user_pk>/favorite/<int:film_pk>/add', views.AddFavorite.as_view(), name="add_favorite"),
+    # path('film/<int:user_pk>/favorite/<int:film_pk>/remove', views.RemoveFavorite.as_view(), name="remove_favorite")
+
+
+
+
+
+
+
+    
+# class AddFavorite(View):
+#     def post(self, request, user_pk, film_pk):
+#         print(user_pk, film_pk)
+#         film = Film.objects.get(pk=film_pk)
+#         current_user = request.user
+#         new_favorite = Favorite.objects.create(user=current_user)
+#         new_favorite.film.add(film)
+
+#         assoc = request.GET.get("assoc")
+#         if assoc == "remove":
+#             Film.objects.get(user_pk=user_pk).favorites.remove(film_pk)
+#         if assoc == "add":
+#             Film.objects.get(user_pk=user_pk).favorites.add(film_pk)
+
+
+
+#         return redirect('film_detail', pk=film_pk)
+
+
+
+
+# class RemoveFavorite(View):
+#     def post(self, request, user_pk, film_pk):
+#         print(user_pk, film_pk)
+
+
+
+
+
+
+# context["films"] = Film.objects.all()
+        # context['film'] = Film.objects.get(pk=self.request.pk)
+        print(context)
+        # times_favorited = len(Favorite.objects.filter(user=self.request.user))
+        # print(len(context['favorites']))
+        # if times_favorited == 0:
+        #     context['favorited'] = False
+        # else:
+        #     context['favorited'] = True
+
+        # print(self.request.GET.get('pk'))

@@ -3,9 +3,11 @@
 {% block content %}
 
     <div class="lotr">
+        
         <a href="{% url 'film_update' film.pk %}">Edit</a>
 
         <a href="{% url 'film_delete' film.pk %}">Delete</a>
+
         <h2>{{film.title}}</h2>
         <img src="{{film.img}}"/>
         <p>Genre - {{film.genre}}</p>
@@ -27,10 +29,10 @@
 
     {% endfor %}
 
-    <form method="POST" action="{% url 'rating_create' film.pk %}">
-        <!-- <form class="rate-form" method="POST" action="{% url 'rating_create' film.pk %}"> -->
+    <!-- <form method="POST" action="{% url 'rating_create' film.pk %}"> -->
+        <form class="rate-form" method="POST" action="{% url 'rating_create' film.pk %}">
         {% csrf_token %}
-        Name - <input type="text" name="name" placeholder="Name" />
+        Name - <input class="name" type="text" readonly="readonly" name="name" value="{{user.username}}" />
         <br>
         Score - <input type="number" name="score" min="1" max="5" required />
         <!-- <div class="col text-center" name="score" value="score">
@@ -46,6 +48,19 @@
         <br>
         <input type="submit" value="Rate" />
     </form>
-    
 
-{% endblock %}
+
+
+    
+    <!-- Add a link that links to a film favorite assoc view -->
+    
+    {% if film in available %}
+    <h3>Add favorite</h3>
+    <a href="{% url 'add_favorite' film.pk %}">Add Favorite</a>
+    {% endif %}
+    
+    
+    
+    
+    {% endblock %}
+    

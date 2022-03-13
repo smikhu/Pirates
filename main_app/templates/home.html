@@ -7,14 +7,14 @@
 <form method="get">
     <div>
       <div>
-        <!--  Our input will search by name of artist  -->
+    
         <input class="input" type="text" name="title" placeholder="Title" />
       </div>
       <div>
         <input type="submit" value="Search" />
       </div>
     </div>
-    <!--  This anchor tag will redirect back to artist list without a query param -->
+
     <a href="{% url 'home' %}">Clear Search</a>
   </form>
 
@@ -24,6 +24,11 @@
         <a href="{% url 'film_detail' film.pk %}">
             <img src="{{film.img}}"/>
         </a>
+        {% if film.user.pk == user.pk %}
+        <p class="user">Added By : {{ user.username }}</p>
+        <a href="{% url 'film_delete' film.pk %}">Delete</a>
+        <a href="{% url 'film_update' film.pk %}">Edit</a>
+        {% endif  %}
         </div>
     {% endfor %}
 

@@ -15,7 +15,7 @@
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
-            <i class="fa fa-imdb fa-2x" style="color:purple;"></i>
+            <i class="fa fa-align-justify" style="color:purple;"></i>
         </label>
         <label class="logo">Pirates</label>
         <ul>
@@ -23,14 +23,12 @@
             <li><a href="/favorites">Favorites</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Logout</a></li>
-            <span class="user"><i class="fa fa-android fa-1x" style="color:purple;"></i> {{user.username}}</span>
+            <span class="navbar-user"><i class="fa fa-user-circle" style="color:purple;"></i> {{user.username}}</span>
             {% else %}
                 <li><a href="{% url 'login' %}">Log In</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
             {% endif %}
         </ul>
-
-
     </nav>
     <div class="container">
         {% block content %}

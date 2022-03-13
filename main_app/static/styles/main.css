@@ -10,6 +10,8 @@ body {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+/* NAVBAR */
+
 nav {
     background: black;
     height: 80px;
@@ -43,7 +45,7 @@ nav ul li a {
     border-radius: 3px;
 }
 
-.user {
+.navbar-user {
     color: purple;
     font-size: 17px;
     text-transform: uppercase;
@@ -123,3 +125,4 @@ a:hover {
     background-color: inherit !important;
     border: 0 !important;
 }
+
