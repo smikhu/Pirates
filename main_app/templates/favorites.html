@@ -2,16 +2,24 @@
 
 {% block content %}
 
-<h1>Favorites</h1> 
-{% for favorite in favorites %}
+<h2 class="favorite-main">MY FAVORITES</h2>
 
-<p>{{ favorite.title }} | </p>
-<img src="{{ favorite.img }}"></img>
+    <div class="favorite-list">
+            {% for favorite in favorites %}
+            <div class="favorites">
+            <p class="favorite-title">{{ favorite.title }} </p>
+            
+            <img class="favorite-image" src="{{ favorite.img }}"></img>
+            
+            <!-- <a class="user-button" href="{% url 'remove_favorite' favorite.pk %}">Remove</a> -->
 
-<a href="{% url 'remove_favorite' favorite.pk %}">Remove</a>
+            <form action="{% url 'remove_favorite' favorite.pk %}">
+                <input class="user-button" value="REMOVE" type="submit"></input>
+              </form>
 
-
-{% endfor %}
+            </div>
+        {% endfor %}
+    </div>
 
 
 {% endblock %}

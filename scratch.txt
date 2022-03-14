@@ -85,3 +85,13 @@
         #     context['favorited'] = True
 
         # print(self.request.GET.get('pk'))
+
+
+
+
+
+
+
+
+INSERT INTO main_app_film(title, img, genre, plot, director, rated, released, metascore, imdbrating) 
+VALUES('Dunkirk', 'https://m.media-amazon.com/images/M/MV5BN2YyZjQ0NTEtNzU5MS00NGZkLTg0MTEtYzJmMWY3MWRhZjM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_SX300.jpg', 'Action, Drama, History', 'Allied soldiers from Belgium, the British Commonwealth and Empire, and France are surrounded by the German Army and evacuated during a fierce battle in World War II.', 'Christopher Nolan', 'PG-13', '21 Jul 2017', '94', '8.7');

@@ -1,59 +1,48 @@
-// const one = document.getElementById('first')
-// const two = document.getElementById('second')
-// const three = document.getElementById('third')
-// const four = document.getElementById('fourth')
-// const five= document.getElementById('fifth')
+const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    // direction: 'vertical',
+    slidesPerView: 5,
+    // spaceBetween: 10,
+    loop: false,
+    freeMode: true,
+    speed: 500,
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
 
-// const form = document.querySelector('.rate-form')
+    breakpoints: {
+        // when window width is >= 1200px
+        1200: {
+            slidesPerView: 4,
+            // spaceBetween: 8,
+        },
+        // when window width is >= 960px
+        960: {
+            slidesPerView: 3,
+            // spaceBetween: 8,
+        },
+        // when window width is >= 720px
+        720: {
+            slidesPerView: 2,
+            // spaceBetween: 6,
+        },
+        // when window width is >= 540px
+        540: {
+            slidesPerView: 1,
+            // spaceBetween: 4,
+        },
+        // when window width is >= 320px
+        320: {
+            slidesPerView: 1,
+            // spaceBetween: 2,
+        },
 
-// const arr = [one, two, three, four, five]
+    },
 
-// arr.forEach(item=> item.addEventListener('mouseover', (event) => {
-//     handleSelect(event.target.id)
-// }))
+    observer: true,
+    observeParents: true,
 
-
-// const handleSelect = (selection) => {
-//     switch(selection) {
-//         case 'first': {
-//             one.classList.add('checked')
-//             two.classList.remove('checked')
-//             three.classList.remove('checked')
-//             four.classList.remove('checked')
-//             five.classList.remove('checked')
-//             return
-//         }
-//         case 'second': {
-//             one.classList.add('checked')
-//             two.classList.add('checked')
-//             three.classList.remove('checked')
-//             four.classList.remove('checked')
-//             five.classList.remove('checked')
-//             return
-//         }
-//         case 'third': {
-//             one.classList.add('checked')
-//             two.classList.add('checked')
-//             three.classList.add('checked')
-//             four.classList.remove('checked')
-//             five.classList.remove('checked')
-//             return
-//         }
-//         case 'fourth': {
-//             one.classList.add('checked')
-//             two.classList.add('checked')
-//             three.classList.add('checked')
-//             four.classList.add('checked')
-//             five.classList.remove('checked')
-//             return
-//         }
-//         case 'fifth': {
-//             one.classList.add('checked')
-//             two.classList.add('checked')
-//             three.classList.add('checked')
-//             four.classList.add('checked')
-//             five.classList.add('checked')
-//             return
-//         }
-//     }
-// }
+  });

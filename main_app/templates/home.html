@@ -2,35 +2,138 @@
 
 {% block content %}
 
-<a href="{% url 'film_create' %}">Add New Film</a>
 
-<form method="get">
-    <div>
-      <div>
+<!-- <a href="{% url 'film_create' %}">Add New Film</a> -->
+<div class="add-movie">
+  <form action="{% url 'film_create' %}">
+    <input class="user-button" value="ADD MOVIE" type="submit"></input>
+  </form>
+</div>
+
+<div class="search">
+
+<form method="GET">
+    <input class="user" type="text" name="title" placeholder="SEARCH..." />
+    <input class="user-button" type="submit" value="SEARCH" />
+    <form class="search" action="{% url 'home' %}">
+      <input type="submit" class="user-button" value="CLEAR" />
+    </form>
+  </form>
+  
+  
+</div>
+
+
+
+  <!-- Slider main container -->
+  <div class="swiper main">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+
+      {% for film in films %}
+
+      <div class="swiper-slide">
+        <a class="car" href="{% url 'film_detail' film.pk %}">
+          <img class="swiper_image" src="{{film.img}}"/>
+        </a>
+        <h2 class="main-title">{{film.title}}</h2>
     
-        <input class="input" type="text" name="title" placeholder="Title" />
-      </div>
-      <div>
-        <input type="submit" value="Search" />
-      </div>
+        {% if film.user.pk == user.pk %}
+            <p class="user-info">Added By : {{ user.username }}</p>
+            
+            <!-- <button type="user-button">
+              <a href="{% url 'film_delete' film.pk %}">Delete</a>
+            </button>
+
+            <button type="user-button">
+              <a href="{% url 'film_update' film.pk %}">Edit</a>
+            </button> -->
+
+        {% endif  %}
+
     </div>
 
-    <a href="{% url 'home' %}">Clear Search</a>
-  </form>
+    {% endfor %}
+
+  </div>
+  
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="swiper thumbTiles">
+  
+  <div class="swiper-wrapper">
+    
 
     {% for film in films %}
-    <div class="lotr">
-        <h2>{{film.title}}</h2>
-        <a href="{% url 'film_detail' film.pk %}">
-            <img src="{{film.img}}"/>
-        </a>
-        {% if film.user.pk == user.pk %}
-        <p class="user">Added By : {{ user.username }}</p>
-        <a href="{% url 'film_delete' film.pk %}">Delete</a>
-        <a href="{% url 'film_update' film.pk %}">Edit</a>
-        {% endif  %}
-        </div>
-    {% endfor %}
+
+    <div class="swiper-slide">
+      <a class="thumbTile" href="{% url 'film_detail' film.pk %}">
+        <img class="thumbTile__image" src="{{film.img}}"/>
+      </a>
+      <h2 class="main-title">{{film.title}}</h2>
+  
+      {% if film.user.pk == user.pk %}
+          <p class="user-info">Added By : {{ user.username }}</p>
+
+      {% endif  %}
+
+  </div>
+
+  {% endfor %}
+
+</div>
+
+
+
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
+
+
+</div> -->
+
+
+
+
+
+
+      <!-- {% for film in films %} -->
+      
+          <!-- <h2>{{film.title}}</h2> -->
+          <!-- <a href="{% url 'film_detail' film.pk %}"><img src="{{film.img}}"/></a> -->
+          
+          
+          
+          <!-- {% if film.user.pk == user.pk %}
+          <p class="user">Added By : {{ user.username }}</p>
+          <a href="{% url 'film_delete' film.pk %}">Delete</a>
+          <a href="{% url 'film_update' film.pk %}">Edit</a>
+          {% endif  %} -->
+          
+  
+      <!-- {% endfor %} -->
 
 
 {% endblock %}

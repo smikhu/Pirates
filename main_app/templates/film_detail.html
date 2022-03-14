@@ -2,65 +2,105 @@
 
 {% block content %}
 
-    <div class="lotr">
+    <div class="detail-container">
+
+
+        <!-- {% if film.user.pk == user.pk %}
+            <p class="user-info">Added By : {{ user.username }}</p>
+            <button type="user-button">
+              <a href="{% url 'film_delete' film.pk %}">Delete</a>
+            </button>
+
+            <button type="user-button">
+              <a href="{% url 'film_update' film.pk %}">Edit</a>
+            </button>
+            {% endif  %} -->
+
+
+
+        <!-- <a href="{% url 'film_update' film.pk %}">Edit</a>
+
+        <a href="{% url 'film_delete' film.pk %}">Delete</a> -->
+
+
+        <div class="left">
+            <h2 class="detail-title">{{film.title}}</h2>
+            <img class="detail-image" src="{{film.img}}"/>
+
+            <div class="left-inner">
+
+                {% if film.user.pk == user.pk %}
+                <p class="user-info">ADDED BY | {{ user.username }}</p>
         
-        <a href="{% url 'film_update' film.pk %}">Edit</a>
+                <form action="{% url 'film_delete' film.pk %}">
+                    <input class="user-button" value="DELETE" type="submit"></input>
+                  </form>
+        
+                  <form action="{% url 'film_update' film.pk %}">
+                    <input class="user-button" value="EDIT" type="submit"></input>
+                  </form>
+                {% endif  %}
 
-        <a href="{% url 'film_delete' film.pk %}">Delete</a>
 
-        <h2>{{film.title}}</h2>
-        <img src="{{film.img}}"/>
-        <p>Genre - {{film.genre}}</p>
-        <p>Plot - {{film.plot}}</p>
-        <p>Director - {{film.director}}</p>
-        <p>Rated - {{film.rated}}</p>
-        <p>Released - {{film.released}}</p>
-        <p>MetaScore - {{film.metascore}}</p>
-        <p>IMDB Rating - {{film.imdbrating}}</p>
-        <br>
+                {% if film in available %}
+                  <form action="{% url 'add_favorite' film.pk %}">
+                      <input class="user-button" value="FAVORITE" type="submit"></input>
+                    </form>
+                {% endif %}
+
+
+            </div>
+        </div>
+        
+        <div class="right">
+            <p>DIRECTED BY {{film.director}}</p>
+            <p>{{film.plot}}</p>
+            <p>{{film.genre}}</p>
+            <p>{{film.rated}}</p>
+            <p>Released | {{film.released}}</p>
+            <p>MetaScore | {{film.metascore}}</p>
+            <p>IMDB Rating | {{film.imdbrating}}</p>
+
+            
+        </div>
+        
     </div>
 
-    {% for rating in film.ratings.all %}
-    <div class="ratings">
-        <p>{{rating.name}}</p>
-        <p>{{rating.score}}<span class="fa fa-star fa-1x checked"></span></p>
-        <p>{{rating.comment}}</p>
-    </div>
-
-    {% endfor %}
-
-    <!-- <form method="POST" action="{% url 'rating_create' film.pk %}"> -->
-        <form class="rate-form" method="POST" action="{% url 'rating_create' film.pk %}">
-        {% csrf_token %}
-        Name - <input class="name" type="text" readonly="readonly" name="name" value="{{user.username}}" />
-        <br>
-        Score - <input type="number" name="score" min="1" max="5" required />
-        <!-- <div class="col text-center" name="score" value="score">
-            Score
-            <button name="score" type="submit" class="my-btn fa fa-star fa-1x checked" id="first"></button>
-            <button name="score" type="submit" class="my-btn fa fa-star fa-1x checked" id="second"></button>
-            <button name="score" type="submit" class="my-btn fa fa-star fa-1x checked" id="third"></button>
-            <button name="score" type="submit" class="my-btn fa fa-star fa-1x" id="fourth"></button>
-            <button name="score" type="submit" class="my-btn fa fa-star fa-1x" id="fifth"></button>
-        </div> -->
-        <br>
-        Comment -<textarea name="comment" rows="4" cols="50"></textarea>
-        <br>
-        <input type="submit" value="Rate" />
-    </form>
 
 
 
-    
-    <!-- Add a link that links to a film favorite assoc view -->
-    
-    {% if film in available %}
-    <h3>Add favorite</h3>
-    <a href="{% url 'add_favorite' film.pk %}">Add Favorite</a>
-    {% endif %}
-    
-    
+
+
+
+
+
+
+    <div class="user-comments">
+        <h3>LEAVE A REVIEW!</h3>
+            <form method="POST" action="{% url 'rating_create' film.pk %}">
+                {% csrf_token %}
+                <input class="details-username" type="text" readonly="readonly" name="name" value="{{user.username}}" />
+                <br>
+                <input class="details-rating" type="number" name="score" min="1" max="5" required /> <span class="fa fa-star fa-1x checked"></span>
+                <br>
+                <textarea class="details-comment" name="comment" rows="4" cols="50"></textarea>
+                <br>
+                <input class="user-button user-submit-button" type="submit" value="SUBMIT" />
+            </form>
+        </div>
+        
+        
+        
+        <div class="comments">
+            <h2>REVIEWS</h2>
+            {% for rating in film.ratings.all %}
+            <div class="ratings">
+                <p class="details-username">{{rating.name}}</p>
+                <p class="details-rating">{{rating.score}}<span class="fa fa-star fa-1x checked"></span></p>
+                <p class="details-comment">{{rating.comment}}</p>
+            </div>
+            {% endfor %}
+        </div>
     
     
     {% endblock %}
-    

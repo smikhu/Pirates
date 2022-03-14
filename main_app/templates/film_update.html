@@ -2,12 +2,15 @@
 
 {% block content %}
 
-<h1>Update {{film.title}}</h1>
+<h2 class="create-edit-movie">Update {{film.title}}</h2>
 
-<form action="" method="post">
-  {% csrf_token %} 
-  {{form.as_p}} 
-  <input type="submit" value="Submit" />
-</form>
+<div class="create-film">
+
+  <form action="" method="POST">
+    {% csrf_token %} 
+    {{form.as_p}} 
+    <input class="user-button create-edit-btn" type="submit" value="SUBMIT" />
+  </form>
+</div>
 
 {% endblock %}

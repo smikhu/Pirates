@@ -3,12 +3,12 @@
 {% block content %}
 
 <h1>Are you sure you want to delete {{film.title}}?</h1>
-<form method="post">
+<form method="POST">
   {% csrf_token %}
   <div>
-    <!-- confirm artist delete -->
+    
     <input type="submit" value="Confirm" />
-    <!-- Redirect back to detail on cancel -->
+   
     <a href="{% url 'film_detail' film.pk %}">Cancel</a>
   </div>
 </form>

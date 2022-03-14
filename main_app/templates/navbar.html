@@ -6,34 +6,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script defer src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <!-- CSS & JS -->
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
     <script src="{% static 'scripts/main.js' %}" defer></script>
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+
     <title>Document</title>
 </head>
 <body>
     <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa fa-align-justify" style="color:purple;"></i>
-        </label>
-        <label class="logo">Pirates</label>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/favorites">Favorites</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            <span class="navbar-user"><i class="fa fa-user-circle" style="color:purple;"></i> {{user.username}}</span>
-            {% else %}
-                <li><a href="{% url 'login' %}">Log In</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            {% endif %}
-        </ul>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fa fa-align-justify" style="color:white;"></i>
+            </label>
+            <a href="/"><label class="logo">PIRATES</label></a>
+            
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/favorites">FAVORITES</a></li>
+                {% if user.is_authenticated %}
+                <span class="navbar-user"><i class="fa fa-user-circle" style="color:white;"></i> {{user.username}}</span>
+                <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">LOG IN</a></li>
+                <li><a href="{% url 'signup' %}">SIGN UP</a></li>
+                {% endif %}
+            </ul>
     </nav>
     <div class="container">
         {% block content %}
 
         {% endblock %}
     </div>
+
+    <footer class="footer">
+        <p>COPYRIGHT &copy; PIRATES ||</span> DESIGNED BY <a href="https://github.com/smikhu" target="_blank"><span class="footer-name">STEVEN MIKHU</span></a></p>
+    </footer>
 </body>
 </html>
