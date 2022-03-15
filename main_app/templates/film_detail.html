@@ -4,25 +4,6 @@
 
     <div class="detail-container">
 
-
-        <!-- {% if film.user.pk == user.pk %}
-            <p class="user-info">Added By : {{ user.username }}</p>
-            <button type="user-button">
-              <a href="{% url 'film_delete' film.pk %}">Delete</a>
-            </button>
-
-            <button type="user-button">
-              <a href="{% url 'film_update' film.pk %}">Edit</a>
-            </button>
-            {% endif  %} -->
-
-
-
-        <!-- <a href="{% url 'film_update' film.pk %}">Edit</a>
-
-        <a href="{% url 'film_delete' film.pk %}">Delete</a> -->
-
-
         <div class="left">
             <h2 class="detail-title">{{film.title}}</h2>
             <img class="detail-image" src="{{film.img}}"/>
@@ -30,7 +11,7 @@
             <div class="left-inner">
 
                 {% if film.user.pk == user.pk %}
-                <p class="user-info">ADDED BY | {{ user.username }}</p>
+                <p class="user-info">ADDED BY {{ user.username }}</p>
         
                 <form action="{% url 'film_delete' film.pk %}">
                     <input class="user-button" value="DELETE" type="submit"></input>
@@ -47,7 +28,6 @@
                       <input class="user-button" value="FAVORITE" type="submit"></input>
                     </form>
                 {% endif %}
-
 
             </div>
         </div>
@@ -67,21 +47,13 @@
     </div>
 
 
-
-
-
-
-
-
-
-
     <div class="user-comments">
         <h3>LEAVE A REVIEW!</h3>
             <form method="POST" action="{% url 'rating_create' film.pk %}">
                 {% csrf_token %}
                 <input class="details-username" type="text" readonly="readonly" name="name" value="{{user.username}}" />
                 <br>
-                <input class="details-rating" type="number" name="score" min="1" max="5" required /> <span class="fa fa-star fa-1x checked"></span>
+                <input class="details-rating" type="number" name="score" min="1" max="5" required /><span class="fa fa-star fa-1x checked"></span>
                 <br>
                 <textarea class="details-comment" name="comment" rows="4" cols="50"></textarea>
                 <br>

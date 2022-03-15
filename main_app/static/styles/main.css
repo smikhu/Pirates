@@ -15,7 +15,7 @@ a {
     text-decoration: none;
     color: white;
 }
-/* a:visited { text-decoration: none; color:black; } */
+
 a:hover { text-decoration: none; color:black; }
 a:focus { text-decoration: none; color:black; }
 a:hover, a:active { text-decoration: none; color:black }
@@ -31,8 +31,7 @@ label.logo {
     color: white;
     font-size: 35px;
     line-height: 80px;
-    padding: 0 100px;
-    /* padding: 0 10px; */
+    padding: 0 50px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -84,17 +83,6 @@ nav ul li a:hover {
     display: none;
 }
 
-/* @media (max-width: 952px) {
-    label.logo{
-        font-size: 30px;
-        padding-left: 50px;
-    }
-
-    nav ul li a {
-        font-size: 16px;
-    }
-
-} */
 
 @media (max-width: 858px) {
     .checkbtn {
@@ -172,11 +160,10 @@ nav ul li a:hover {
     color: white;
     text-transform: uppercase;
     border: 1px solid gray;
-    padding: 25px;
-    margin: 25px;
+    padding: 10px;
+    margin: 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 5px gray;
-    /* background-color: rgba(133, 133, 133, 1); */
 }
 
 .detail-title {
@@ -219,10 +206,9 @@ h3 {
 }
 
 .ratings {
-    padding: 25px;
-    margin: 25px;
+    padding: 10px;
+    margin: 10px;
     border: 1px solid gray;
-    /* background-color: rgba(159, 159, 159, 1); */
     border-radius: 5px;
     box-shadow: 2px 2px 15px gray;
 }
@@ -233,14 +219,8 @@ h3 {
     display: block;
     margin: 0 auto;
     text-align: center;
-    padding: 40px;
+    padding: 50px;
 }
-
-.add-movie {
-    padding: 10px;
-}
-
-
 
 
 /* MAIN PAIGE CAROUSEL */
@@ -312,7 +292,7 @@ h3 {
     cursor: pointer;
     font-weight: bold;
     color: red;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 .user-button:hover {
@@ -360,7 +340,6 @@ input {
 h2 {
     color: white;
     text-align: center;
-    /* margin-top: 25px; */
 }
 
 .favorite-main {

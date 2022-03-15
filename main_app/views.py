@@ -73,9 +73,7 @@ class FilmDetail(DetailView):
         context = super().get_context_data(**kwargs)
         all_films = Film.objects.all()
         all_favorites = Favorite.objects.filter(user=self.request.user).values_list('title', flat=True)
-        print(all_favorites)
         available = all_films.exclude(title__in=all_favorites)
-        print(available)
         context['available'] = available
         return context
 

@@ -22,6 +22,7 @@ class Film(models.Model):
     class Meta:
         ordering = ['title']
 
+        
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
@@ -29,6 +30,8 @@ class Favorite(models.Model):
     film = models.ForeignKey(Film, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.film.title)
+
+
 
 class Rating(models.Model):
     name = models.CharField(max_length=100)

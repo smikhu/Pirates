@@ -10,8 +10,6 @@
             <p class="favorite-title">{{ favorite.title }} </p>
             
             <img class="favorite-image" src="{{ favorite.img }}"></img>
-            
-            <!-- <a class="user-button" href="{% url 'remove_favorite' favorite.pk %}">Remove</a> -->
 
             <form action="{% url 'remove_favorite' favorite.pk %}">
                 <input class="user-button" value="REMOVE" type="submit"></input>
