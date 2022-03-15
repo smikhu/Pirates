@@ -366,6 +366,7 @@ h2 {
 .create-edit-movie {
     margin-top: 25px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .create-edit-btn {
