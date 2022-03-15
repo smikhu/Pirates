@@ -10,11 +10,11 @@
     <input class="user" type="text" name="title" placeholder="SEARCH..." />
     <input class="user-button" type="submit" value="SEARCH" />
 
-    <form class="search" action="{% url 'home' %}">
+    <form action="{% url 'home' %}">
       <input type="submit" class="user-button" value="CLEAR" />
-      <form class="search" action="{% url 'film_create' %}">
-        <input class="user-button" value="ADD MOVIE" type="submit"></input>
-      </form>
+    </form>
+    <form action="{% url 'film_create' %}">
+      <input class="user-button" value="ADD MOVIE" type="submit"></input>
     </form>
 
 
