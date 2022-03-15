@@ -9,20 +9,19 @@
   <form method="GET">
     <input class="user" type="text" name="title" placeholder="SEARCH..." />
     <input class="user-button" type="submit" value="SEARCH" />
-
+    
     <form action="{% url 'home' %}">
-      <input type="submit" class="user-button" value="CLEAR" />
+      <input class="user-button" type="submit" value="CLEAR" />
     </form>
-    <form action="{% url 'film_create' %}">
-      <input class="user-button" value="ADD MOVIE" type="submit"></input>
-    </form>
+  </form>
 
-
+  <form action="{% url 'film_create' %}">
+    <input class="user-button" value="ADD MOVIE" type="submit"></input>
   </form>
   
-  
-  
 </div>
+
+
 
   <div class="swiper main">
     

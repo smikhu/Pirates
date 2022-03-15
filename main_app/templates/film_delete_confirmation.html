@@ -2,17 +2,21 @@
 
 {% block content %}
 
-<h2>Are you sure you want to delete {{film.title}}?</h2>
+<h2 class="confirm-title">Are you sure you want to delete '{{film.title}}'?</h2>
 
+<div class="confirm-form">
 
-<form method="POST">
-  {% csrf_token %}
-  <div>
-    
-    <input type="submit" value="CONFIRM" />
+  <form method="POST">
+    {% csrf_token %}
+    <input class="user-button" type="submit" value="CONFIRM" />
+  </form>
+  
+  <form action="{% url 'film_detail' film.pk %}">
+      <input class="user-button" value="CANCEL" type="submit"></input>
+    </form>
+</div>
    
-    <a href="{% url 'film_detail' film.pk %}">CANCEL</a>
-  </div>
-</form>
+  
+
 
 {% endblock %}
