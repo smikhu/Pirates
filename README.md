@@ -1,4 +1,4 @@
-<h1>Pirates(Working Title)</h1>
+<h1>Pirates</h1>
 
 <h2>App Description</h2>
 <h4>An app where you can search for movies, view a full description on them and add them to your favorites/to watch list.</h4>
